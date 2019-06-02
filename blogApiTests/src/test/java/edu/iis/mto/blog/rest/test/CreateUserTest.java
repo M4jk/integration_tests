@@ -27,7 +27,7 @@ public class CreateUserTest extends FunctionalTests {
     }
 
     @Test
-    public void postFromWithExistingEmailReturnsConflictStatusCode() {
+    public void postFormWithExistingEmailReturnsConflictStatusCode() {
         JSONObject jsonObj = new JSONObject().put("email", "brian@domain.com");
         RestAssured.given()
                    .accept(ContentType.JSON)
