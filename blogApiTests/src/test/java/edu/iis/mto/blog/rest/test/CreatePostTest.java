@@ -26,4 +26,19 @@ public class CreatePostTest extends FunctionalTests {
                    .post(USER_API, 1);
     }
 
+    @Test
+    public void postBlogPostWhenUserIsNotConfirmedReturnsNotAcceptableCode() {
+        JSONObject jsonObj = new JSONObject().put("entry", "post text");
+        RestAssured.given()
+                   .accept(ContentType.JSON)
+                   .header("Content-Type", "application/json;charset=UTF-8")
+                   .body(jsonObj.toString())
+                   .expect()
+                   .log()
+                   .all()
+                   .statusCode(HttpStatus.SC_NOT_ACCEPTABLE)
+                   .when()
+                   .post(USER_API, 2);
+    }
+
 }
